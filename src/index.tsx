@@ -10,7 +10,7 @@ const root = document.getElementById('root');
 if (root) {
     const rootElement = createRoot(root);
 
-    console.log(rootElement);
+    //console.log(rootElement);
     rootElement.render(
         <StrictMode>
             <App />
