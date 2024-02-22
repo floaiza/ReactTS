@@ -4,6 +4,8 @@ import { PokemonListItem } from '../../interfaces/PokemonListItem';
 import { getMainPokemonType } from '../../utils/getMainPokemonType';
 import { Label } from '../shared/Label/Label';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
+import { FavoriteButton } from '../shared/Button/FavoriteButton';
+import { useNavigate } from 'react-router';
 
 interface PokemonCardProps {
     pokemon?: PokemonListItem;
@@ -12,6 +14,8 @@ interface PokemonCardProps {
 
 export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, pokemonId }) => {
 
+    const navigate = useNavigate();
+
     const { pokemonData } = useGetPokemon( pokemon?.name, pokemonId );
     
     
@@ -19,11 +23,16 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, pokemonId }) 
     const mainType = useMemo( () => pokemonData && getMainPokemonType( pokemonData ) ,[ pokemonData ]);
     //console.log({ mainType: mainType });
     //console.log({ pokemonData: pokemonData });
+
+    const onClick = () => {
+        navigate(`/pokemon/${ pokemonData?.name }`);
+    }
     
     return (
         <>
-        <div className={`${ mainType }-background w-56 h-56 rounded-lg shadow-lg p-4` }>
-            <div className="flex flex-col items-center ms-auto">
+        <div className={`${ mainType }-background relative w-56 h-56 rounded-lg shadow-lg p-4 cursor-pointer` }>
+            <FavoriteButton pokemonId={ pokemonData?.id ?? 0 } />
+            <div className="flex flex-col items-center ms-auto" onClick={ onClick }>
                 {/* <span>{ pokemonData?.name ?? "" }</span> */}
                 <Label>{ pokemonData?.name ? capitalizeFirstLetter(pokemonData?.name) : "" }</Label>
                 <img
