@@ -4,7 +4,7 @@ import { PokemonData } from '../interfaces/PokemonData';
 
 export const useGetPokemon = ( pokemonName?: string, pokemonId?: number ) => {
 
-    const { data: pokemonData, isLoading, error } = useQuery({
+    const { data: pokemonData, isLoading, error } = useQuery<PokemonData>({
         queryKey: [ 'pokemon', pokemonName, pokemonId ],
         queryFn: async() => {
             

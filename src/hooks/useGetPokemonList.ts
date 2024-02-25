@@ -9,7 +9,6 @@ import { PokemonListItem } from '../interfaces/PokemonListItem';
 //     url: string;
 // }
 
-
 interface PokemonList {
     count: number;
     next: string | null;
@@ -17,11 +16,8 @@ interface PokemonList {
     results: PokemonListItem[];
 }
 
-
-
 export const useGetPokemonList = () => {
 
-    
     const [ url, setUrl ] = useState(`${BASE_URL}pokemon?limit=36`);
 
     const { data, isLoading, error  } = useQuery<PokemonList>({
@@ -34,7 +30,7 @@ export const useGetPokemonList = () => {
             }
             //console.log({ response: response });
         
-            return response.json();
+            return await response.json();
         }
     });
 

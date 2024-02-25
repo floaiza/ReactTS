@@ -17,8 +17,6 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, pokemonId }) 
     const navigate = useNavigate();
 
     const { pokemonData } = useGetPokemon( pokemon?.name, pokemonId );
-    
-    
 
     const mainType = useMemo( () => pokemonData && getMainPokemonType( pokemonData ) ,[ pokemonData ]);
     //console.log({ mainType: mainType });
