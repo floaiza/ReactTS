@@ -49,7 +49,6 @@ export const useGetPokemonList = () => {
     }
 
     return {
-        
         error: error?.message ?? null,
         goToNextPage: data?.next ? goToNextPage : undefined,
         goToPreviosPage: data?.previous ? goToPreviosPage : undefined,
