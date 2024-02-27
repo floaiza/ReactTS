@@ -7,8 +7,11 @@ import { convertLbsToKg } from '../../utils/convertLbsToKg';
 import { convertInchesToCm } from '../../utils/convertInchesToCm';
 import { PokemonSprites } from '../PokemonSprites/PokemonSprites';
 import { TypeIcons } from '../shared/TypeIcons/TypeIcons';
+import { useSearchStore } from '../../store/useSearchStore';
 
 export const PokemonInfo: React.FC = (  ) => {
+
+   
 
     const { pokemonName } = useParams();
     //console.log({pokemonName: pokemonName });
@@ -16,7 +19,8 @@ export const PokemonInfo: React.FC = (  ) => {
     const { pokemonData } = useGetPokemon( pokemonName );
 
     const mainType = useMemo( () => pokemonData && getMainPokemonType( pokemonData ), [ pokemonData ]);
-  
+
+   
     return (
     <div className="flex flex-row justify-between shadow-lg bg-gray-100 rounded-lg">
       <div className={`${ mainType }-background w-72 h-72 rounded-l-lg items-center`}>
