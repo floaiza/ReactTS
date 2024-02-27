@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Pokeball from '../../assets/pokeball.png';
+import { SearchButton } from '../shared/Button/SearchButton';
 
 const NavigationBar: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const NavigationBar: React.FC = () => {
             <div className="flex gap-5 items-center">
                 <Link to="/" className="text-black hover:text-red-700 hover:underline">Pokedex</Link>
                 <Link to="/favorite" className="text-black hover:text-red-700 hover:underline">Favorites</Link>
+                <SearchButton />
             </div>
         </div>
     </nav>

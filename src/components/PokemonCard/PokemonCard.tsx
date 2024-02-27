@@ -6,6 +6,7 @@ import { Label } from '../shared/Label/Label';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 import { FavoriteButton } from '../shared/Button/FavoriteButton';
 import { TypeIcons } from '../shared/TypeIcons/TypeIcons';
+import { useSearchStore } from '../../store/useSearchStore';
 
 import { useNavigate } from 'react-router';
 
@@ -16,6 +17,8 @@ interface PokemonCardProps {
 
 export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, pokemonId }) => {
 
+
+    const closeModal = useSearchStore((state) => state.closeModal);
     const navigate = useNavigate();
 
     const { pokemonData } = useGetPokemon( pokemon?.name, pokemonId );
@@ -26,6 +29,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, pokemonId }) 
 
     const onClick = () => {
         navigate(`/pokemon/${ pokemonData?.name }`);
+        closeModal();
     }
     
     return (
